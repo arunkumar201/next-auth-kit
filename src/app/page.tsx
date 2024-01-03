@@ -26,10 +26,7 @@ export default function Home() {
             </div>
             <div className='space-x-12'>
               <LoginButton>
-                <Button
-                  variant='secondary'
-                  className='text-base md:text-xl'
-                >
+                <Button variant='secondary' className='text-base md:text-xl'>
                   Sign In
                 </Button>
               </LoginButton>

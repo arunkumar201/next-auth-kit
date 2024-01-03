@@ -1,3 +1,5 @@
+'use client';
+
 import { CardWrapper } from '@/components/custom-ui/card-wrapper';
 import LoginForm from '@/components/auth/LoginForm';
 
