@@ -4,7 +4,13 @@ type FormErrorProps = {
   message?: string;
 };
 
-const FormError = ({ message }: FormErrorProps) => {
+/**
+ * Renders a form error message component.
+ *
+ * @param {FormErrorProps} message - The error message to be displayed.
+ * @return {JSX.Element | null} The form error message component.
+ */
+const FormError = ({ message }: FormErrorProps): JSX.Element | null => {
   if (!message) {
     return null;
   }

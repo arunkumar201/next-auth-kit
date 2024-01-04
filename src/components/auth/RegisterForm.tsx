@@ -14,31 +14,37 @@ import { Button } from '@/components/ui/button';
 import FormError from '../form-error';
 import FormSuccess from '../success';
 import { Input } from '@/components/ui/input';
-import { Login } from '@/actions/Login';
-import { LoginSchema } from '@/schema';
+import { Register } from '@/actions/Register';
+import { RegisterSchema } from '@/schema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-type LoginFormProps = {};
+type RegisterFormProps = {};
 
-const LoginForm = ({}: LoginFormProps) => {
+const RegisterForm = ({}: RegisterFormProps) => {
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<string>('');
 
   const [isPending, startTransition] = useTransition();
-  const form = useForm<z.infer<typeof LoginSchema>>({
-    resolver: zodResolver(LoginSchema),
+  const form = useForm<z.infer<typeof RegisterSchema>>({
+    resolver: zodResolver(RegisterSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+      name: '',
+    },
   });
 
-  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     setError('');
     setSuccess('');
 
     startTransition(async () => {
       try {
-        const res = await Login({
+        const res = await Register({
           email: values.email,
           password: values.password,
+          name: values.name,
         });
         setSuccess(res?.success!);
         setError(res?.error!);
@@ -72,6 +78,20 @@ const LoginForm = ({}: LoginFormProps) => {
             />
             <FormField
               control={form.control}
+              name='name'
+              disabled={isPending}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Your Name</FormLabel>
+                  <FormControl>
+                    <Input {...field} placeholder='John Wick' type='text' />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name='password'
               disabled={isPending}
               render={({ field }) => (
@@ -88,7 +108,7 @@ const LoginForm = ({}: LoginFormProps) => {
           <FormError message={error} />
           <FormSuccess message={success} />
           <Button type='submit' className='w-full' disabled={isPending}>
-            Log In
+            Register
           </Button>
         </form>
       </Form>
@@ -96,4 +116,4 @@ const LoginForm = ({}: LoginFormProps) => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
