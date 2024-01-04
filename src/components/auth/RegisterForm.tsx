@@ -36,10 +36,9 @@ const RegisterForm = ({}: RegisterFormProps) => {
   });
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
-    setError('');
-    setSuccess('');
-
     startTransition(async () => {
+      setError('');
+      setSuccess('');
       try {
         const res = await Register({
           email: values.email,
@@ -51,6 +50,7 @@ const RegisterForm = ({}: RegisterFormProps) => {
       } catch (error: unknown) {
         setError(error as string);
       }
+      form.reset();
     });
   };
   return (
@@ -58,6 +58,20 @@ const RegisterForm = ({}: RegisterFormProps) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-7'>
           <div className='space-y-5'>
+            <FormField
+              control={form.control}
+              name='name'
+              disabled={isPending}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Your Name</FormLabel>
+                  <FormControl>
+                    <Input {...field} placeholder='John Wick' type='text' />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name='email'
@@ -71,20 +85,6 @@ const RegisterForm = ({}: RegisterFormProps) => {
                       placeholder='example@gmail.com'
                       type='email'
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name='name'
-              disabled={isPending}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Your Name</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder='John Wick' type='text' />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
