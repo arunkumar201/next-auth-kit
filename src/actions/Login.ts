@@ -4,9 +4,7 @@ import * as z from 'zod';
 
 import { LoginSchema } from '@/schema';
 
-export const Login = async (
-  value: z.infer<typeof LoginSchema>
-) => {
+export const Login = async (value: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(value);
 
   if (!validatedFields) {
