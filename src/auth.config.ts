@@ -2,13 +2,13 @@ import type { NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { LoginSchema } from './schema';
 import { getUserByEmail } from './utils/user';
-import bcrypt from 'bcryptjs'
-import { getSafeUserDetails,IUser } from './helper/user';
+import bcrypt from 'bcryptjs';
+import { getSafeUserDetails } from './helper/user';
 
 export default {
   providers: [
     Credentials({
-      async authorize(credential) {
+      async authorize(credential): Promise<unknown | any> {
         const validatedFelids = LoginSchema.safeParse(credential);
         if (!validatedFelids.success) {
           return { error: 'Invalid Fields' };
