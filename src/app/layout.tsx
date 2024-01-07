@@ -19,9 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className=''>
-      <body
-        className={cn('transition-colors duration-50', poppins.className)}
-      >
+      <body className={cn('transition-colors duration-50', poppins.className)}>
         <ThemeProviders>
           <div className='min-h-full w-full bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-green-400 via-fuchsia-200 to-sky-700'>
             {children}

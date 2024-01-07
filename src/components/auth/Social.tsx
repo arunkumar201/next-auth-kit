@@ -34,7 +34,7 @@ const SocialButton: React.FC<SocialButtonProps> = ({
 
 const handleClick = async (provider: string) => {
   await signIn(provider.toLocaleLowerCase(), {
-    callbackUrl:DEFAULT_LOGIN_REDIRECT,
+    callbackUrl: DEFAULT_LOGIN_REDIRECT,
   });
 };
 

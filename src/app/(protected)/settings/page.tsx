@@ -7,12 +7,12 @@ export default async function Settings() {
   return (
     <main>
       <div>Hello World {JSON.stringify(session)}</div>
-      <form action={
-       async () => {
-          'use server'
-          await signOut()
-        }
-      }>
+      <form
+        action={async () => {
+          'use server';
+          await signOut();
+        }}
+      >
         <Button>Sign Out</Button>
       </form>
     </main>
