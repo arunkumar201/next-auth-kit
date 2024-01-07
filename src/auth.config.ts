@@ -4,9 +4,11 @@ import { LoginSchema } from './schema';
 import { getUserByEmail } from './utils/user';
 import bcrypt from 'bcryptjs';
 import { getSafeUserDetails } from './helper/user';
+import { socialAuthProviders } from './socialProviders';
 
 export default {
   providers: [
+    ...socialAuthProviders,
     Credentials({
       async authorize(credential): Promise<unknown | any> {
         const validatedFelids = LoginSchema.safeParse(credential);

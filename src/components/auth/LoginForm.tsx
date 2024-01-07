@@ -48,51 +48,57 @@ const LoginForm = ({}: LoginFormProps) => {
     });
   };
   return (
-    <div className=''>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-7'>
-          <div className='space-y-5'>
-            <FormField
-              control={form.control}
-              name='email'
-              disabled={isPending}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Your Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder='example@gmail.com'
-                      type='email'
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name='password'
-              disabled={isPending}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Your Password</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder='********' type='password' />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <FormError message={error} />
-          <FormSuccess message={success} />
-          <Button type='submit' className='w-full' disabled={isPending}>
-            Log In
-          </Button>
-        </form>
-      </Form>
-    </div>
+    <>
+      <div className=''>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-7'>
+            <div className='space-y-5'>
+              <FormField
+                control={form.control}
+                name='email'
+                disabled={isPending}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Your Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder='example@gmail.com'
+                        type='email'
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name='password'
+                disabled={isPending}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Your Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder='********'
+                        type='password'
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <FormError message={error} />
+            <FormSuccess message={success} />
+            <Button type='submit' className='w-full' disabled={isPending}>
+              Log In
+            </Button>
+          </form>
+        </Form>
+      </div>
+    </>
   );
 };
 

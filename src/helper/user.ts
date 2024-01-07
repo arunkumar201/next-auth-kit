@@ -19,7 +19,7 @@ export interface IUser {
  * @param {IUser} user - The user object containing the details to be processed.
  * @return {object} - The safe version of the user details.
  */
-export const getSafeUserDetails = (user: IUser) => {
-  const { password, createdAt, id, ...safeUser } = user;
+export const getSafeUserDetails = (user: IUser): object => {
+  const { password, createdAt, ...safeUser } = user;
   return safeUser;
 };

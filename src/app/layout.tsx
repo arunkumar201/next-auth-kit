@@ -2,6 +2,8 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+import { ThemeProviders } from '@/context/ThemeContext';
+import { cn } from '@/lib/utils';
 
 const poppins = Poppins({ weight: '500', subsets: ['latin'] });
 
@@ -17,10 +19,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className=''>
-      <body className={poppins.className}>
-        <div className='min-h-full w-full bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-green-400 via-fuchsia-200 to-sky-700'>
-          {children}
-        </div>
+      <body
+        className={cn('transition-colors duration-50', poppins.className)}
+      >
+        <ThemeProviders>
+          <div className='min-h-full w-full bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-green-400 via-fuchsia-200 to-sky-700'>
+            {children}
+          </div>
+        </ThemeProviders>
       </body>
     </html>
   );

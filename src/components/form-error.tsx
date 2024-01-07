@@ -16,7 +16,7 @@ const FormError = ({ message }: FormErrorProps): JSX.Element | null => {
   }
   return (
     <>
-      <div className='flex items-center gap-x-2 text-sm text-destructive bg-destructive/15 p-3 rounded-xl shadow-inner'>
+      <div className='flex items-center gap-x-2 text-sm text-destructive bg-destructive/15 dark:bg-red-300 p-3 rounded-xl shadow-inner'>
         <BiError className='w-5 h-5' />
         <p>{message}</p>
       </div>

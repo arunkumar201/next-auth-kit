@@ -5,6 +5,7 @@ import * as z from 'zod';
 import { AuthError } from 'next-auth';
 import { DEFAULT_LOGIN_REDIRECT } from '@/route';
 import { LoginSchema } from '@/schema';
+import { getUserByEmail } from '@/utils/user';
 import { signIn } from '@/auth';
 
 export const Login = async (value: z.infer<typeof LoginSchema>) => {
@@ -14,6 +15,13 @@ export const Login = async (value: z.infer<typeof LoginSchema>) => {
   }
 
   const { email, password } = validatedFields.data;
+
+  const existingUser = await getUserByEmail(email);
+
+  if (!existingUser || !existingUser?.email || !existingUser?.password) {
+    return { error: 'USER NOT FOUND' };
+  }
+  
   try {
     await signIn('credentials', {
       email,
