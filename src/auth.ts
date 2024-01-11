@@ -14,19 +14,37 @@ export const {
   update,
 } = NextAuth({
   adapter: PrismaAdapter(db),
+  pages: {
+    signIn: '/auth/login',
+    signOut: '/auth/register',
+    error: '/auth/error',
+    verifyRequest: '/auth/verify-request',
+    newUser: '/auth/new-user',
+  },
+  events: {
+    async linkAccount({ user }) {
+      await db.user.update({
+        where: {
+          id: user?.id,
+        },
+        data: {
+          emailVerified: true,
+        },
+      });
+    },
+  },
   callbacks: {
     async signIn({ user }) {
       if (!user) {
         return false;
       }
-      const existingUser = await getUserByEmail(user?.email!);
+      // const existingUser = await getUserByEmail(user?.email!);
 
-      if (!existingUser || !existingUser?.emailVerified) {
-        return false;
-      }
+      // if (!existingUser || !existingUser?.emailVerified) {
+      //   return false;
+      // }
       return true;
     },
-
     //jwt callback runs before session
     async jwt({ token }) {
       if (!token.sub) {

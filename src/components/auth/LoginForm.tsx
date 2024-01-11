@@ -11,12 +11,14 @@ import {
 import { useState, useTransition } from 'react';
 
 import { Button } from '@/components/ui/button';
+import { ERROR_MESSAGE } from '@/messages/error';
 import FormError from '../form-error';
 import FormSuccess from '../success';
 import { Input } from '@/components/ui/input';
 import { Login } from '@/actions/Login';
 import { LoginSchema } from '@/schema';
 import { useForm } from 'react-hook-form';
+import { useSearchParams } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 type LoginFormProps = {};
@@ -29,6 +31,13 @@ const LoginForm = ({}: LoginFormProps) => {
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
   });
+
+  const searchParamsError = useSearchParams();
+
+  const urlError =
+    searchParamsError?.get('error') === 'OAuthAccountNotLinked'
+      ? ERROR_MESSAGE.OAUTH_ACCOUNT_NOT_LINKED
+      : '';
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setError('');
@@ -90,7 +99,7 @@ const LoginForm = ({}: LoginFormProps) => {
                 )}
               />
             </div>
-            <FormError message={error} />
+            <FormError message={error || urlError} />
             <FormSuccess message={success} />
             <Button type='submit' className='w-full' disabled={isPending}>
               Log In

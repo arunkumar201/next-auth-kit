@@ -7,7 +7,7 @@ export interface IUser {
   id: string;
   name: string | null;
   email: string | null;
-  emailVerified?: Date | null;
+  emailVerified?: boolean | null;
   image: string | null;
   password: string | null;
   createdAt: Date;

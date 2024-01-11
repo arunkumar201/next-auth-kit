@@ -36,8 +36,10 @@ const RegisterForm = ({}: RegisterFormProps) => {
   });
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
-
-    console.debug("🚀 ~ file: RegisterForm.tsx:40 ~ onSubmit ~ values:", values);
+    console.debug(
+      '🚀 ~ file: RegisterForm.tsx:40 ~ onSubmit ~ values:',
+      values
+    );
 
     startTransition(async () => {
       setError('');

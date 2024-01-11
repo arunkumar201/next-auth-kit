@@ -20,7 +20,7 @@ services:
           action: sync
 
     environment:
-      - DATABASE_URL= 
+      - DATABASE_URL=
       - AUTH_SECRET= FS4LWfsExN6S7DzHK0WllOkFclrgm4a0UI527GR9Pwg=
 
 volumes:
