@@ -20,6 +20,7 @@ export const {
         return false;
       }
       const existingUser = await getUserByEmail(user?.email!);
+
       if (!existingUser || !existingUser?.emailVerified) {
         return false;
       }

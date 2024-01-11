@@ -38,8 +38,7 @@ export const Login = async (value: z.infer<typeof LoginSchema>) => {
       }
     }
     console.log(`Error While Logging In: ${error}`);
-    //should throw error ,otherwise it will not redirect from login page
-    throw error;
+    // throw error;
   }
 
   return { success: 'Verification Email has been Sent' };
