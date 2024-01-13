@@ -1,4 +1,4 @@
-import { BiError } from 'react-icons/bi';
+import { Ban } from "lucide-react";
 
 type FormErrorProps = {
   message?: string;
@@ -16,9 +16,9 @@ const FormError = ({ message }: FormErrorProps): JSX.Element | null => {
   }
   return (
     <>
-      <div className='flex items-center gap-x-2 text-sm text-destructive bg-destructive/15 dark:bg-red-300 p-3 rounded-xl shadow-inner'>
-        <BiError className='w-5 h-5' />
-        <p>{message}</p>
+      <div className='flex items-center justify-start gap-x-2 text-sm text-destructive bg-destructive/15 dark:bg-red-300 p-3 rounded-xl shadow-inner'>
+        <Ban className="self-start w-5 h-5"   />
+        <p className="">{message}</p>
       </div>
     </>
   );

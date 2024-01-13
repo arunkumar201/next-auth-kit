@@ -1,3 +1,17 @@
 {
-  "cSpell.words": ["hookform", "lucide", "Signin", "trpc"]
+  "cSpell.words": [
+    "hookform",
+    "lucide",
+    "Signin",
+    "trpc"
+  ],
+  "spellright.language": [
+    "en"
+  ],
+  "spellright.documentTypes": [
+    "markdown",
+    "latex",
+    "plaintext",
+    "typescript"
+  ]
 }

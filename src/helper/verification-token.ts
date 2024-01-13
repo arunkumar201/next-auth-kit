@@ -6,11 +6,11 @@ export const getVerificationTokenByEmail = async (email: string) => {
       where: {
         email: email,
       },
-	});
-	  return verificationToken
+    });
+    return verificationToken;
   } catch (error) {
-	  console.log(`Error while getting verification token: ${error}`);
-	  return null;
+    console.log(`Error while getting verification token: ${error}`);
+    return null;
   }
 };
 
@@ -21,5 +21,6 @@ export const getVerificationTokenByToken = async (token: string) => {
         token,
       },
     });
+    return verificationToken;
   } catch (error) {}
 };

@@ -8,6 +8,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useTransition } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -18,7 +19,6 @@ import { Input } from '@/components/ui/input';
 import { Login } from '@/actions/Login';
 import { LoginSchema } from '@/schema';
 import { useForm } from 'react-hook-form';
-import { useSearchParams } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 type LoginFormProps = {};
@@ -27,6 +27,7 @@ const LoginForm = ({}: LoginFormProps) => {
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<string>('');
 
+  const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -50,6 +51,9 @@ const LoginForm = ({}: LoginFormProps) => {
           password: values.password,
         });
         setSuccess(res?.success!);
+        if (res?.success) {
+          router.push('/settings');
+        }
         setError(res?.error!);
       } catch (error: unknown) {
         setError(error as string);

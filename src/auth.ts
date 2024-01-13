@@ -34,15 +34,20 @@ export const {
     },
   },
   callbacks: {
-    async signIn({ user }) {
+    async signIn({ user,account }) {
       if (!user) {
         return false;
       }
-      // const existingUser = await getUserByEmail(user?.email!);
+      if (account?.provider !== "credentials") { 
+        return true;
+      }
+      //check if user exists and is verified
+      const existingUser = await getUserByEmail(user?.email!);
 
-      // if (!existingUser || !existingUser?.emailVerified) {
-      //   return false;
-      // }
+      //if user exists and is not verified,so we prevent sign in
+      if (!existingUser || !existingUser?.emailVerified) {
+        return false;
+      }
       return true;
     },
     //jwt callback runs before session

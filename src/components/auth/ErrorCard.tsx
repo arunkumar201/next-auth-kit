@@ -12,9 +12,11 @@ const ErrorCard: React.FC<ErrorCardProps> = ({ errorMessage }) => {
     <div className='flex items-center justify-center w-full'>
       <div className='bg-white p-8 rounded shadow-lg max-w-md'>
         <div className='text-yellow-500 text-5xl mb-4 w-full justify-center flex'>
-          <FaExclamationTriangle  />
+          <FaExclamationTriangle />
         </div>
-			  <p className='text-gray-800 text-lg mb-6 tracking-widest font-semibold text-center'>{errorMessage}</p>
+        <p className='text-gray-800 text-lg mb-6 tracking-widest font-semibold text-center'>
+          {errorMessage}
+        </p>
         <Link
           prefetch={true}
           href='/auth/register'

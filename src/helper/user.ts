@@ -1,8 +1,5 @@
 import 'server-only';
 
-import { DefaultArgs } from '@prisma/client/runtime/library';
-import { Prisma } from '@prisma/client';
-
 export interface IUser {
   id: string;
   name: string | null;
