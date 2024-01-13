@@ -1,11 +1,11 @@
 'use client';
 
-import Overlay, { MessageDialog } from '../Dialog';
 import { useEffect, useState } from 'react';
 
 import { CardWrapper } from '../custom-ui/card-wrapper';
 import FormError from '../form-error';
 import FormSuccess from '../success';
+import Overlay from '../Dialog';
 import { ScaleLoader } from 'react-spinners';
 import { newVerifiedToken } from '@/actions/new-verification';
 import { useRouter } from 'next/navigation';

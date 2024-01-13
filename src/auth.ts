@@ -34,11 +34,11 @@ export const {
     },
   },
   callbacks: {
-    async signIn({ user,account }) {
+    async signIn({ user, account }) {
       if (!user) {
         return false;
       }
-      if (account?.provider !== "credentials") { 
+      if (account?.provider !== 'credentials') {
         return true;
       }
       //check if user exists and is verified
