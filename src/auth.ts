@@ -60,7 +60,7 @@ export const {
         }
         await db.twoFactorConfirmation.delete({
           where: {
-            id:twoFactorConfirmation.id,
+            id: twoFactorConfirmation.id,
           },
         });
       }

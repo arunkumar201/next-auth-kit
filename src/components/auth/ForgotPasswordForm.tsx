@@ -23,9 +23,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 const ForgotPasswordForm = () => {
   const [error, setError] = useState<string>('');
-  const [success,setSuccess] = useState<string>('');
-    const [redirectingMsg, setRedirectingMsg] = useState<boolean>(false);
-
+  const [success, setSuccess] = useState<string>('');
+  const [redirectingMsg, setRedirectingMsg] = useState<boolean>(false);
 
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -36,19 +35,19 @@ const ForgotPasswordForm = () => {
   const onSubmit = (values: z.infer<typeof ResetPasswordSchema>) => {
     setError('');
     setSuccess('');
-  
+
     startTransition(async () => {
       try {
         const res = await ForgotPassword(values);
         setSuccess(res?.success!);
-        setRedirectingMsg(true)
+        setRedirectingMsg(true);
         if (res?.success) {
           setTimeout(() => {
             router.push('/auth/login');
-            setRedirectingMsg(false)
-          },2000)
+            setRedirectingMsg(false);
+          }, 2000);
         }
-        
+
         setError(res?.error!);
       } catch (error: unknown) {
         setError(error as string);

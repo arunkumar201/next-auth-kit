@@ -12,7 +12,7 @@ const NewPassword = (props: Props) => {
         backButtonLabel={'Back to Login?'}
         backButtonHref='/auth/login'
       >
-        <ResetPasswordForm/>
+        <ResetPasswordForm />
       </CardWrapper>
     </>
   );

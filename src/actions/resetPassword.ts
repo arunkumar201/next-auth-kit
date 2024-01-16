@@ -4,8 +4,7 @@ import bcrypt from 'bcryptjs';
 import { db } from '@/lib/db';
 
 const URL = process.env.WEB_URL;
-export const ResetPassword = async (password: string,token: string) => {
-  
+export const ResetPassword = async (password: string, token: string) => {
   if (!password || !token) {
     return { error: 'Missing Email or Token' };
   }
