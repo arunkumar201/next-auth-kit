@@ -24,3 +24,30 @@ export const sendVerificationEmail = async (email: string, token: string, url: s
 		return {error:"Something went wrong"}
     }
 };
+
+export const sendVerificationEmailForResetPassword =async (email: string, token: string, url: string): Promise<{error:string} | void> => {
+    
+const link = `${url}/auth/new-password?token=${token}`;
+    try {
+        await resend.emails.send({
+            from: "onboarding@resend.dev",
+            to: email,
+            subject: "Please, Confirm Your Email",
+            html: `<p>Click the link below to Reset the Password </p><p><a href="${link}">Verify</a></p>`
+        });
+    } catch (error) {
+		console.log(`Error while sending verification email: ${error}`);
+		return {error:"Something went wrong"}
+    }
+    
+}
+
+export const send2FATokenEmail = async (email:string,token:string) => {
+    
+    await resend.emails.send({
+         from: "onboarding@resend.dev",
+         to: email,
+        subject: "Two Factor Code",
+         html: `<p>Your Two Factor Code ${token}</p>`
+    })
+}

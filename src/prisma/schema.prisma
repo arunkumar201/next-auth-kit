@@ -11,16 +11,18 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified Boolean?
-  image         String?
-  password      String?
-  role          UserRole  @default(USER)
-  accounts      Account[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id                    String                 @id @default(cuid())
+  name                  String?
+  email                 String?                @unique
+  emailVerified         Boolean?
+  image                 String?
+  password              String?
+  role                  UserRole               @default(USER)
+  accounts              Account[]
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  isTwoFactorEnabled    Boolean?               @default(false)
+  twoFactorConfirmation TwoFactorConfirmation?
 }
 
 model Account {
@@ -49,6 +51,32 @@ model VerificationToken {
   expires_at DateTime
 
   @@unique([token, email])
+}
+
+model forgotPasswordToken {
+  id         String   @id @default(cuid())
+  token      String   @unique
+  email      String
+  expires_at DateTime
+
+  @@unique([token, email])
+}
+
+model twoFactorToken {
+  id         String   @id @default(cuid())
+  token      String   @unique
+  email      String
+  expires_at DateTime
+
+  @@unique([token, email])
+}
+
+model TwoFactorConfirmation {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId])
 }
 
 enum UserRole {
