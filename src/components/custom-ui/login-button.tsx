@@ -1,47 +1,41 @@
-'use client ';
+'use client';
 
-import { ReactNode } from 'react';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+
+import LoginForm from '../auth/LoginForm';
 import { useRouter } from 'next/navigation';
 
 interface LoginButtonProps {
-  children: ReactNode;
+  children: React.ReactNode;
   mode?: 'modal' | 'redirect';
   asChild?: boolean;
 }
 
-/**
- * Renders a login button component.
- *
- * @param {ReactNode} children - The children of the component.
- * @param {boolean} asChild - Determines whether the component should render as a child.
- * @param {string} mode - The mode of the component.
- * @return {JSX.Element} The rendered login button component.
- */
-const LoginButton = ({
+export const LoginButton = ({
   children,
-  asChild,
   mode = 'redirect',
-}: LoginButtonProps): JSX.Element => {
+  asChild,
+}: LoginButtonProps) => {
   const router = useRouter();
 
-  const onClick = (): void => {
-    router.push('auth/login');
-    console.log('LOGIN BUTTON CLICKED');
+  const onClick = () => {
+    router.push('/auth/login');
   };
+
   if (mode === 'modal') {
     return (
-      <>
-        <span>TODO: MODAL IMPLEMENT</span>
-      </>
+      <Dialog>
+        <DialogTrigger asChild={asChild}>{children}</DialogTrigger>
+        <DialogContent className='p-0 w-auto bg-transparent border-none'>
+          <LoginForm />
+        </DialogContent>
+      </Dialog>
     );
   }
+
   return (
-    <>
-      <span className='cursor-pointer' onClick={onClick}>
-        {children}
-      </span>
-    </>
+    <span onClick={onClick} className='cursor-pointer'>
+      {children}
+    </span>
   );
 };
-
-export default LoginButton;

@@ -13,6 +13,7 @@ const LoginPage = ({}: LoginProps) => {
         backButtonLabel={'Don’t have an account yet?'}
         backButtonHref='register'
         showSocial
+        
       >
         <LoginForm />
       </CardWrapper>

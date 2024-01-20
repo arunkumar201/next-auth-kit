@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Lock } from 'lucide-react';
-import LoginButton from '@/components/custom-ui/login-button';
+import { LoginButton } from '@/components/custom-ui/login-button';
 
 export default function Home() {
   return (

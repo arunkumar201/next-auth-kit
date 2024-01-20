@@ -26,13 +26,13 @@ const ThemeToggleBtn = () => {
 
   return (
     <button
-      className='flex items-center justify-center  rounded-full transition-all duration-400'
+      className='w-12 flex items-center justify-center  rounded-full transition-all duration-400'
       style={btnStyle}
       onClick={handleToggle}
     >
-      <div className='absolute inset-0  rounded-full bg-gray-600 opacity-0 transition duration-500 ease-in-out' />
-      <div className='absolute inset-0  rounded-full bg-gray-700 hover:dark:bg-slate-200 opacity-0 transition duration-500 ease-in-out' />
-      <div className='relative z-10 '>
+      <div className='w-12 absolute inset-0  rounded-full bg-gray-600 opacity-0 transition duration-500 ease-in-out' />
+      <div className='w-12 absolute inset-0  rounded-full bg-gray-700 hover:dark:bg-slate-200 opacity-0 transition duration-500 ease-in-out' />
+      <div className='w-12 relative z-10 '>
         {!darkMode ? (
           <HiSun size={40} className='text-yellow-300' />
         ) : (
