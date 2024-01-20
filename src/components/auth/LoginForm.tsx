@@ -60,7 +60,7 @@ const LoginForm = ({}: LoginFormProps) => {
     startTransition(async () => {
       try {
         const res = await Login(values);
-        if (!res?.error && !res?.twoFactor) { 
+        if (!res?.error && !res?.twoFactor) {
           setRedirectingMsgSuccess(true);
         }
 
