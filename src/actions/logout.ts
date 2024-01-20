@@ -9,6 +9,5 @@ import { signOut } from '@/auth';
  */
 export const logout = async (): Promise<void> => {
   // Perform custom logic before logout on the server
-	  await signOut();
-
+  await signOut();
 };
