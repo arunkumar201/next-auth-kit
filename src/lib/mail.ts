@@ -45,7 +45,7 @@ const link = `${url}/auth/new-password?token=${token}`;
 export const send2FATokenEmail = async (email:string,token:string) => {
     
     await resend.emails.send({
-         from: "onboarding@resend.dev",
+         from: process.env.MAIL || "onboarding@resend.dev",
          to: email,
         subject: "Two Factor Code",
          html: `<p>Your Two Factor Code ${token}</p>`
