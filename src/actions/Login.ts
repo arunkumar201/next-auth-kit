@@ -20,7 +20,7 @@ const URL = process.env.WEB_URL;
 
 export const Login = async (value: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(value);
-    if (!validatedFields.success) {
+  if (!validatedFields.success) {
     return { error: 'Invalid Fields' };
   }
 
@@ -85,7 +85,6 @@ export const Login = async (value: z.infer<typeof LoginSchema>) => {
           userId: existingUser.id,
         },
       });
-      
     } else {
       const twoFactorToken = await generateTwoFactorToken(existingUser?.email!);
 
