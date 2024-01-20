@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { ServerIcon, SettingsIcon, UserCogIcon } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
@@ -14,8 +14,8 @@ export default function Navbar() {
 
   useEffect(() => {
     router.prefetch(pathname);
-  },[pathname,router]);
-  
+  }, [pathname, router]);
+
   function clickHandler(path: string): void {
     router.push(path);
   }
