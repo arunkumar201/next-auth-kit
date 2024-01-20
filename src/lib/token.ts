@@ -63,7 +63,7 @@ export const generateTokenForResetPassport = async (email:string) => {
 export const generateTwoFactorToken = async(email:string) => {
   const token = crypto.randomInt(100_000,1_000_000).toString();
   
-  const expirationTime = new Date(Date.now() + 10 * 60 * 1000); //10min
+  const expirationTime = new Date(Date.now() + 4 * 60 * 1000); //4min
 
   const existingToken = await getTwoFactorTokenByEmail(email);
 

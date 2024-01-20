@@ -21,7 +21,6 @@ export const {
     signOut: '/auth/register',
     error: '/auth/error',
     verifyRequest: '/auth/verify-request',
-    newUser: '/auth/new-user',
   },
   events: {
     async linkAccount({ user }) {
