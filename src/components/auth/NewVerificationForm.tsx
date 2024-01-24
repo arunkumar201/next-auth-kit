@@ -47,7 +47,7 @@ const NewVerificationForm = ({ token }: Props) => {
           setTimeout(() => {
             router.push('auth/login');
             setRedirectingMsg(false);
-          }, 1000);
+          }, 100);
         } else if (res?.error) {
           // Set the error message if verification is not successful
           setError(res.error);

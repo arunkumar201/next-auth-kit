@@ -45,7 +45,7 @@ const ForgotPasswordForm = () => {
           setTimeout(() => {
             router.push('/auth/login');
             setRedirectingMsg(false);
-          }, 2000);
+          }, 200);
         }
 
         setError(res?.error!);

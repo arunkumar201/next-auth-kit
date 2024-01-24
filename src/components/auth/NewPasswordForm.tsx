@@ -56,7 +56,7 @@ const ResetPasswordForm = () => {
           setTimeout(() => {
             router.push('/auth/login');
             setRedirectingMsg(false);
-          }, 2000);
+          }, 200);
         }
         if (res?.error) {
           setError(res?.error!);

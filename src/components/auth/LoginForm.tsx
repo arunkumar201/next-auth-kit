@@ -73,14 +73,14 @@ const LoginForm = ({}: LoginFormProps) => {
             form.reset();
             router.push('/settings');
             setRedirectingMsgSuccess(false);
-          }, 2000);
+          }, 200);
         }
         if (res?.twoFactor) {
           setRedirectingMsg(true);
           setTimeout(() => {
             setRedirectingMsg(false);
             setIsShow2FA(true);
-          }, 2000);
+          }, 200);
         }
       } catch (error: unknown) {
         setError('Something went wrong');
